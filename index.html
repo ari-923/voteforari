@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ariana Herrera for Director of Student Technology</title>
+  <style>
+    :root {
+      --bg: #f7fbff;
+      --bg-soft: #eef6ff;
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-strong: #ffffff;
+      --border: rgba(112, 144, 176, 0.18);
+      --text: #15314b;
+      --muted: #5e7a96;
+      --accent: #4aa6ff;
+      --accent-2: #7b6dff;
+      --accent-3: #dff1ff;
+      --shadow: 0 20px 50px rgba(36, 78, 120, 0.12);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, rgba(123, 109, 255, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(74, 166, 255, 0.14), transparent 30%),
+        linear-gradient(180deg, #fafdff 0%, #f3f9ff 55%, #eef6ff 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 251, 255, 0.84);
+      border-bottom: 1px solid rgba(106, 143, 179, 0.16);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 0;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .brand strong {
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(74, 166, 255, 0.12);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 0.65rem 0.85rem;
+      cursor: pointer;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 20px rgba(59, 101, 146, 0.08);
+    }
+
+    .hero {
+      padding: 4rem 0 2.25rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 2.3rem;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247, 251, 255, 0.92)),
+        linear-gradient(135deg, rgba(74, 166, 255, 0.08), rgba(123, 109, 255, 0.04));
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -80px;
+      top: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74, 166, 255, 0.18), rgba(74, 166, 255, 0));
+      pointer-events: none;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(74, 166, 255, 0.22);
+      background: rgba(74, 166, 255, 0.08);
+      color: #2c7fd0;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      line-height: 1.02;
+      margin: 1rem 0 1rem;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
+    }
+
+    .accent {
+      color: #2d88e6;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 58ch;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 16px;
+      padding: 0.95rem 1.2rem;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4aa6ff, #8ed0ff);
+      color: white;
+      box-shadow: 0 14px 28px rgba(74, 166, 255, 0.25);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid rgba(112, 144, 176, 0.2);
+      box-shadow: 0 10px 24px rgba(59, 101, 146, 0.08);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      background: rgba(244, 250, 255, 0.96);
+      border: 1px solid rgba(112, 144, 176, 0.14);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.12rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .hero-card {
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(241, 248, 255, 0.95));
+    }
+
+    .hook-card {
+      background: linear-gradient(145deg, #ffffff, #f4faff);
+      border: 1px solid rgba(74, 166, 255, 0.16);
+      border-radius: 28px;
+      padding: 1.45rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.76rem;
+      color: #2d88e6;
+      font-weight: 700;
+    }
+
+    .message-box h2,
+    .section-heading h2,
+    .hook-question,
+    .text-block h2,
+    .card h2 {
+      margin: 0.55rem 0 0.8rem;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .hook-question {
+      margin-top: 0.7rem;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+    }
+
+    .hook-preview {
+      font-size: 1.08rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .hook-preview strong {
+      color: #2d88e6;
+    }
+
+    .hook-button {
+      width: 100%;
+      justify-content: space-between;
+      text-align: left;
+      background: linear-gradient(135deg, rgba(74,166,255,0.12), rgba(123,109,255,0.08));
+      color: var(--text);
+      border: 1px solid rgba(74, 166, 255, 0.16);
+      box-shadow: none;
+      padding: 1rem 1.1rem;
+    }
+
+    .hook-button span:last-child {
+      font-size: 1.25rem;
+      transition: transform 0.22s ease;
+    }
+
+    .hook-button.open span:last-child {
+      transform: rotate(45deg);
+    }
+
+    .hook-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .hook-content-inner {
+      padding-top: 1rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .mini-points {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .mini-point {
+      background: rgba(223, 241, 255, 0.55);
+      border: 1px solid rgba(74, 166, 255, 0.12);
+      border-radius: 18px;
+      padding: 0.95rem;
+      color: var(--text);
+    }
+
+    section {
+      padding: 1rem 0 2.25rem;
+    }
+
+    section[id] {
+      scroll-margin-top: 110px;
+    }
+
+    .section-heading {
+      margin-bottom: 1rem;
+      max-width: 700px;
+    }
+
+    .section-heading p,
+    .text-block p,
+    .card p,
+    .vote-note,
+    .timeline-card p,
+    .message-box p {
+      color: var(--muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.25rem;
+    }
+
+    .card { padding: 1.6rem; }
+
+    .resource-grid,
+    .platform-grid,
+    .qual-grid,
+    .action-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .resource-item,
+    .qual-item,
+    .action-item {
+      background: rgba(248, 252, 255, 1);
+      border: 1px solid rgba(112, 144, 176, 0.14);
+      border-radius: 18px;
+      padding: 1rem;
+      color: var(--text);
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .resource-item:hover,
+    .qual-item:hover,
+    .action-item:hover,
+    .platform-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(74, 166, 255, 0.25);
+      box-shadow: 0 14px 28px rgba(59, 101, 146, 0.08);
+    }
+
+    .platform-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 1rem;
+    }
+
+    .platform-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(112, 144, 176, 0.14);
+      border-radius: 24px;
+      padding: 1.45rem;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .platform-card h3,
+    .vote-card h3,
+    .timeline-card h3,
+    .text-block h3,
+    .voice-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.65rem;
+      font-size: 1.22rem;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .vote-card,
+    .voice-card {
+      background: linear-gradient(180deg, rgba(223, 241, 255, 0.95), rgba(255,255,255,0.98));
+      border: 1px solid rgba(74, 166, 255, 0.18);
+    }
+
+    .vote-panel,
+    .voice-panel {
+      margin-top: 1.1rem;
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px dashed rgba(74, 166, 255, 0.28);
+    }
+
+    .vote-link-box {
+      display: flex;
+      gap: 0.7rem;
+      margin-top: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .fake-input {
+      flex: 1;
+      min-width: 220px;
+      border-radius: 14px;
+      border: 1px solid rgba(112, 144, 176, 0.16);
+      background: rgba(247, 251, 255, 0.96);
+      padding: 0.9rem 1rem;
+      color: var(--text);
+      font-size: 0.94rem;
+    }
+
+    .small {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .form-placeholder {
+      margin-top: 1rem;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(112, 144, 176, 0.14);
+      background: white;
+      min-height: 280px;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .timeline-card {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1rem;
+      align-items: start;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(112, 144, 176, 0.14);
+      border-radius: 22px;
+      padding: 1rem;
+      box-shadow: 0 14px 28px rgba(59, 101, 146, 0.06);
+    }
+
+    .timeline-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.15rem;
+      background: linear-gradient(135deg, rgba(74, 166, 255, 0.2), rgba(123, 109, 255, 0.18));
+      color: var(--text);
+    }
+
+    .footer {
+      border-top: 1px solid rgba(112, 144, 176, 0.14);
+      padding: 1.3rem 0 2.4rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .two-col,
+      .split-section,
+      .platform-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .menu-btn { display: inline-flex; }
+
+      .nav-links {
+        position: absolute;
+        right: 0;
+        top: calc(100% + 0.55rem);
+        width: min(280px, calc(100vw - 2rem));
+        padding: 0.8rem;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.97);
+        box-shadow: var(--shadow);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links a { width: 100%; }
+      .hero { padding-top: 2rem; }
+      .hero-copy, .hero-card, .card { padding: 1.2rem; }
+      .resource-grid, .qual-grid, .action-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <strong>Ariana Herrera</strong>
+        <span>ASUWT Director of Student Technology</span>
+      </div>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#top">Home</a>
+        <a href="#why">Why I’m Running</a>
+        <a href="#platform">Platform</a>
+        <a href="#voice">Your Voice</a>
+        <a href="#experience">Why Me</a>
+        <a href="#vote">Vote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+
+        <div class="panel hero-card reveal" style="margin-bottom:1.5rem;">
+          <div class="hook-card">
+            <div class="eyebrow">Before You Scroll</div>
+            <div class="hook-question">Did you know students may already be paying for tools they never knew they had?</div>
+            <p class="hook-preview">
+              <strong>Canva Pro, free printing, 3D printing, LinkedIn Learning, JMP, Azure, and more</strong> are already included for many students, but a lot have never heard about them.
+            </p>
+
+            <button class="btn hook-button" id="hookToggle" type="button" aria-expanded="false">
+              <span>Open to read why this matters</span>
+              <span>+</span>
+            </button>
+
+            <div class="hook-content" id="hookContent">
+              <div class="hook-content-inner">
+                That means students can miss out on tools that help with classes, projects, portfolios, and job applications. Some even spend extra money on things they already have through tuition. I’m running because students deserve clearer access, better awareness, and a stronger connection to the resources meant to help them succeed.
+
+                <div class="mini-points">
+                  <div class="mini-point">Students should not have to discover major campus resources by accident.</div>
+                  <div class="mini-point">Technology should create opportunity, not confusion.</div>
+                  <div class="mini-point">Better awareness can help students save money and build stronger resumes.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-grid">
+          <div class="panel hero-copy reveal">
+            <div class="tag">ASUWT Election Campaign</div>
+            <h1>Vote Ariana Herrera for <span class="accent">Director of Student Technology</span></h1>
+            <p class="lead">
+              Students already pay for powerful tools and resources through tuition. I want to make sure students actually know about them, use them, and benefit from them.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#vote">Vote for Ariana</a>
+              <a class="btn btn-secondary" href="#platform">See My Platform</a>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat">
+                <strong>More access</strong>
+                <span>Make student resources easier to find and understand.</span>
+              </div>
+              <div class="stat">
+                <strong>More awareness</strong>
+                <span>Help students stop paying extra for things already included.</span>
+              </div>
+              <div class="stat">
+                <strong>Student voice</strong>
+                <span>I want to hear what students actually need. Through feedback and open communication, I will make sure student ideas help shape campus technology.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container two-col">
+        <div class="panel card reveal text-block">
+          <div class="eyebrow">Why I’m Running</div>
+          <h2>Students deserve to know what their tuition already provides.</h2>
+          <p>
+            I have met many students who do not realize they already have access to tools and services that can support their academics, creativity, and career growth. I have seen this firsthand through conversations in class and through campus technology support.
+          </p>
+          <p>
+            Because of that lack of awareness, students sometimes pay out of pocket for resources they already have access to. I want to help change that by pushing for better visibility, clearer communication, and easier access.
+          </p>
+          <p>
+            This is not just about promoting resources. It is about helping students get the full value of their tuition and use those tools to build stronger skills in a competitive job market.
+          </p>
+        </div>
+
+        <div class="panel card reveal">
+          <div class="eyebrow">Examples of Student Resources</div>
+          <h3>Resources students should know about</h3>
+          <div class="resource-grid" id="resourceGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="platform">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">My Platform</div>
+          <h2>What I want to focus on as Director of Student Technology</h2>
+          <p>
+            My campaign is centered on practical improvements that help students discover, use, and benefit from the technology and services already available on campus.
+          </p>
+        </div>
+
+        <div class="platform-grid" id="platformGrid"></div>
+      </div>
+    </section>
+
+    <section id="voice">
+      <div class="container">
+        <div class="panel card voice-card reveal">
+          <div class="eyebrow">Student Voice</div>
+          <h2>Your Voice, Your Campus</h2>
+          <p>
+            I want to hear directly from students about what technology resources, tools, and improvements matter most at UW Tacoma. Share your ideas, concerns, and suggestions so your voice can help shape what we focus on and advocate for.
+          </p>
+
+          <div class="voice-panel">
+            <h3>Share what students need most</h3>
+            <p class="small">
+            </p>
+
+            <div class="cta-row" style="margin-top: 1rem;">
+              <a
+                class="btn btn-primary"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdEAJA9kr4xdYfqNKXOcjoNzJlhBV4XZqU3CkGxXvhjK1mwcw/viewform?usp=header"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Share Your Ideas
+              </a>
+            </div>
+
+<div style="margin-top: 1rem; border-radius: 22px; overflow: hidden; border: 1px solid rgba(112, 144, 176, 0.14); background: white;">
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSdEAJA9kr4xdYfqNKXOcjoNzJlhBV4XZqU3CkGxXvhjK1mwcw/viewform?usp=header"
+    width="100%"
+    height="850"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0"
+    style="display:block;"
+  >
+    Loading…
+  </iframe>
+</div>
+
+            <!-- Example Google Form embed:
+            <div style="margin-top: 1rem; border-radius: 22px; overflow: hidden; border: 1px solid rgba(112, 144, 176, 0.14); background: white;">
+              <iframe
+                src="YOUR_GOOGLE_FORM_EMBED_LINK_HERE"
+                width="100%"
+                height="850"
+                frameborder="0"
+                marginheight="0"
+                marginwidth="0"
+                style="display:block;"
+              >
+                Loading…
+              </iframe>
+            </div>
+            -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container split-section">
+        <div class="panel card reveal">
+          <div class="eyebrow">Why Me</div>
+          <h2>Experience that connects student needs with real solutions</h2>
+          <div class="qual-grid" id="qualGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vote">
+      <div class="container">
+        <div class="panel card vote-card reveal">
+          <div class="eyebrow">Vote</div>
+          <h2>Support a campaign focused on access, awareness, and student voice.</h2>
+          <p class="vote-note">
+            Vote Ariana Herrera for ASUWT Director of Student Technology and support a campaign focused on making student resources visible, useful, easier to access, and more responsive to what students actually need.
+          </p>
+
+          <div class="vote-panel">
+            <h3>Add your official voting link here</h3>
+            <p class="small">Once you receive the approved election link or QR code, replace the placeholder below.</p>
+            <div class="vote-link-box">
+              <div class="fake-input" id="voteLinkText">Official ASUWT voting link goes here</div>
+              <button class="btn btn-primary" id="copyBtn" type="button">Copy placeholder</button>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-secondary" href="#voice">Share your voice first</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Campaign Focus</div>
+          <h2>How I want to turn this into action</h2>
+          <p>
+            These are the kinds of student-centered improvements I want to advocate for so more students can actually benefit from the tools and services already available through UW Tacoma.
+          </p>
+        </div>
+
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>Ariana Herrera — Candidate for ASUWT Director of Student Technology</div>
+      <div>Focused on making student resources visible, useful, accessible, and student-informed.</div>
+    </div>
+  </footer>
+
+  <script>
+    const resources = [
+      "Canva Pro",
+      "Free printing",
+      "3D printing",
+      "LinkedIn Learning",
+      "JMP",
+      "Azure",
+      "Software access",
+      "Campus technology support",
+      "Makerspace tools",
+      "Resume-building skill resources"
+    ];
+
+    const platformItems = [
+      {
+        title: "Make resources visible",
+        text: "Too many students are paying extra for tools and services that are already included in tuition. I want those resources to be easier to find from day one."
+      },
+      {
+        title: "Turn access into opportunity",
+        text: "Campus tools should help students build stronger resumes, gain practical skills, and feel more prepared for internships and jobs."
+      },
+      {
+        title: "Listen and act on feedback",
+        text: "Student technology decisions should reflect what students actually need, from awareness to usability to access."
+      }
+    ];
+
+    const qualifications = [
+      "Senior at UW Tacoma",
+      "Double major in Information Technology and Business Administration",
+      "IT HelpDesk Assistant with hands-on experience supporting students, faculty, and staff",
+      "Understands both the student experience and the systems students rely on",
+      "Focused on practical, student-centered technology improvements"
+    ];
+
+    const actionSteps = [
+      {
+        step: "01",
+        title: "Increase awareness early",
+        text: "Advocate for better ways to introduce students to key resources when they begin at UW Tacoma."
+      },
+      {
+        step: "02",
+        title: "Improve communication",
+        text: "Push for clearer, more visible messaging about what is available, where it is, and how students can use it."
+      },
+      {
+        step: "03",
+        title: "Center student needs",
+        text: "Gather feedback from students about the technology challenges and resource gaps they are actually experiencing."
+      },
+      {
+        step: "04",
+        title: "Promote career value",
+        text: "Highlight resources that can help students build stronger portfolios, resumes, and technical skills."
+      }
+    ];
+
+    const resourceGrid = document.getElementById("resourceGrid");
+    const platformGrid = document.getElementById("platformGrid");
+    const qualGrid = document.getElementById("qualGrid");
+    const timeline = document.getElementById("timeline");
+
+    resources.forEach((item) => {
+      const div = document.createElement("div");
+      div.className = "resource-item";
+      div.textContent = item;
+      resourceGrid.appendChild(div);
+    });
+
+    platformItems.forEach((item) => {
+      const article = document.createElement("article");
+      article.className = "platform-card reveal";
+      article.innerHTML = `
+        <h3>${item.title}</h3>
+        <p>${item.text}</p>
+      `;
+      platformGrid.appendChild(article);
+    });
+
+    qualifications.forEach((item) => {
+      const div = document.createElement("div");
+      div.className = "qual-item";
+      div.textContent = item;
+      qualGrid.appendChild(div);
+    });
+
+    actionSteps.forEach((item) => {
+      const article = document.createElement("article");
+      article.className = "timeline-card reveal";
+      article.innerHTML = `
+        <div class="timeline-number">${item.step}</div>
+        <div>
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </div>
+      `;
+      timeline.appendChild(article);
+    });
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+      });
+    });
+
+    const copyBtn = document.getElementById("copyBtn");
+    const voteLinkText = document.getElementById("voteLinkText");
+
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(voteLinkText.textContent.trim());
+        copyBtn.textContent = "Copied";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy placeholder";
+        }, 1600);
+      } catch (error) {
+        copyBtn.textContent = "Copy failed";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy placeholder";
+        }, 1600);
+      }
+    });
+
+    const hookToggle = document.getElementById("hookToggle");
+    const hookContent = document.getElementById("hookContent");
+
+    hookToggle.addEventListener("click", () => {
+      const isOpen = hookContent.style.maxHeight;
+      if (isOpen) {
+        hookContent.style.maxHeight = null;
+        hookToggle.classList.remove("open");
+        hookToggle.setAttribute("aria-expanded", "false");
+      } else {
+        hookContent.style.maxHeight = hookContent.scrollHeight + "px";
+        hookToggle.classList.add("open");
+        hookToggle.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((element) => {
+      observer.observe(element);
+    });
+
+    const sections = document.querySelectorAll("main section[id]");
+    const navAnchors = document.querySelectorAll(".nav-links a");
+
+    const scrollToSection = (id) => {
+      const element = document.querySelector(id);
+      if (!element) return;
+
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    };
+
+    navAnchors.forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
+        const target = anchor.getAttribute("href");
+        if (target.startsWith("#")) {
+          e.preventDefault();
+          scrollToSection(target);
+          navLinks.classList.remove("open");
+        }
+      });
+    });
+
+    const setActiveLink = () => {
+      let current = "top";
+
+      sections.forEach((section) => {
+        const top = section.offsetTop - 140;
+        if (window.scrollY >= top) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navAnchors.forEach((anchor) => {
+        anchor.classList.toggle("active", anchor.getAttribute("href") === `#${current}`);
+      });
+    };
+
+    window.addEventListener("scroll", setActiveLink);
+    setActiveLink();
+  </script>
+</body>
+</html>
