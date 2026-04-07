@@ -1317,10 +1317,10 @@
       try {
         await navigator.clipboard.writeText(voteLinkText.textContent.trim());
         copyBtn.textContent = "Copied!";
-        setTimeout(() => { copyBtn.textContent = "Copy Link"; }, 1600);
+        setTimeout(() => { copyBtn.textContent = "Copy Email"; }, 1600);
       } catch {
         copyBtn.textContent = "Copy failed";
-        setTimeout(() => { copyBtn.textContent = "Copy Link"; }, 1600);
+        setTimeout(() => { copyBtn.textContent = "Copy Email"; }, 1600);
       }
     });
 
